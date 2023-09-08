@@ -11,26 +11,28 @@
   </head>
   <body>
     <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/drive_api.js"></script>
     <div id="g_id_onload"
-    data-client_id="660437883218-87b4c7jvt14pljlhj7gdmiul60bf0m30.apps.googleusercontent.com"
-    data-context="signin"
-    data-ux_mode="popup"
-    data-callback="initClient"
-    data-auto_prompt="false">
-</div>
+        data-client_id="660437883218-87b4c7jvt14pljlhj7gdmiul60bf0m30.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-callback="initClient"
+        data-auto_prompt="false">
+    </div>
 
-<div class="g_id_signin"
-    data-type="standard"
-    data-shape="rectangular"
-    data-theme="outline"
-    data-text="signin_with"
-    data-size="large"
-    data-logo_alignment="left">
-</div>
+      <div class="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="signin_with"
+          data-size="large"
+          data-logo_alignment="left">
+      </div>
         <div style="position: absolute; right: 10vw">
           <button onclick="getToken();">Get access token</button>
-          <button onclick="uploadFile(null, null);">Test</button>
+          <button onclick="createTimeRelativeDocument();">Test</button>
+          <button onclick="getBaseFolder();">Get Drive</button>
           <button onclick="revokeToken();">Revoke token</button>
       </div>
 
