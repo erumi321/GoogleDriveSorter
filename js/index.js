@@ -25,7 +25,7 @@ let timeBlock = {
 }
 
 function createTimeRelativeDocument() {
-    let d = new Date('December 17, 1995 10:45:00')
+    let d = new Date()
     let hours = d.getHours()
     let minutes = d.getMinutes()
     let time = hours * 60 + minutes
