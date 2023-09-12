@@ -50,13 +50,8 @@ function createTimeRelativeDocument() {
     }
 }
 
-function getBaseFolder(callback) {
-    API_GETDRIVE((drive) => {
-        drive.files.forEach((file) => {
-            if (file.name == "Math") {
-                console.log(file.id)
-                return file.id
-            }
-        })
+function getParentFolder() {
+    handleAuthClick((id) => {
+        DRIVE_BASE_FOLDER = id
     })
 }
