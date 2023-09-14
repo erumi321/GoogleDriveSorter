@@ -24,12 +24,12 @@ let timeBlock = {
 
 }
 
-function createTimeRelativeDocument() {
+function submitTimeRelativeDocument(schoolDay) {
+    document.getElementById("DaySelector").classList.add("hidden")
     let d = new Date()
     let hours = d.getHours()
     let minutes = d.getMinutes()
     let time = hours * 60 + minutes
-    let schoolDay = "A" //TODO: Implement chooser
     let schoolDayType = "N" //TODO: Implement chooser
     for (const [key, value] of Object.entries(timeBlock[schoolDay][schoolDayType])) {
         let t = time - key
@@ -48,6 +48,12 @@ function createTimeRelativeDocument() {
             break;
         }
     }
+}
+
+function createTimeRelativeDocument() {
+    document.getElementById("DaySelector").classList.remove("hidden")
+    document.getElementById("ADayButton").setAttribute("onclick", "submitTimeRelativeDocument('A')")
+    document.getElementById("EDayButton").setAttribute("onclick", "submitTimeRelativeDocument('E')")
 }
 
 function getParentFolder() {

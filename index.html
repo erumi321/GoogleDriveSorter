@@ -9,7 +9,6 @@
   </head>
   <body>
     <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
-    <script src="js/index.js"></script>
     <!-- <div id="g_id_onload"
         data-client_id="660437883218-87b4c7jvt14pljlhj7gdmiul60bf0m30.apps.googleusercontent.com"
         data-context="signin"
@@ -26,12 +25,18 @@
           data-size="large"
           data-logo_alignment="left">
       </div>
-        <div style="position: absolute; right: 10vw">
+        <div style="position: absolute; right: 50vw; top: 50vh;">
           <button id="authorize_button" onclick="getParentFolder();">Get Parent Folder</button>
           <button onclick="createTimeRelativeDocument();">Test</button>
           <button id="signout_button" onclick="handleSignoutClick();">Revoke token</button>
       </div>
-      <script src="js/picker_api.js"></script>
+      <div id="DaySelector" class="hidden">
+        <p>A or E Day</p>
+        <button id="ADayButton">A</button>
+        <button id="EDayButton">E</button>
+      </div>
+    <script src="js/index.js"></script>
+    <script src="js/picker_api.js"></script>
       <script src="js/drive_api.js"></script>
       <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
       <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
