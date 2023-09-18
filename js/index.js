@@ -25,7 +25,7 @@ let timeBlock = {
 }
 
 function submitTimeRelativeDocument(schoolDay) {
-    document.getElementById("DaySelector").classList.add("hidden")
+    document.getElementById("day_background").classList.add("hidden")
     let d = new Date()
     let hours = d.getHours()
     let minutes = d.getMinutes()
@@ -51,7 +51,7 @@ function submitTimeRelativeDocument(schoolDay) {
 }
 
 function createTimeRelativeDocument() {
-    document.getElementById("DaySelector").classList.remove("hidden")
+    document.getElementById("day_background").classList.remove("hidden")
     document.getElementById("ADayButton").setAttribute("onclick", "submitTimeRelativeDocument('A')")
     document.getElementById("EDayButton").setAttribute("onclick", "submitTimeRelativeDocument('E')")
 }
@@ -59,5 +59,6 @@ function createTimeRelativeDocument() {
 function getParentFolder() {
     handleAuthClick((id) => {
         DRIVE_BASE_FOLDER = id
+        document.getElementById("time_doc_btn").classList.remove("hidden")
     })
 }

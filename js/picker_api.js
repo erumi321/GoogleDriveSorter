@@ -7,7 +7,7 @@ let accessToken = null;
 
 
   document.getElementById('authorize_button').style.visibility = 'hidden';
-  document.getElementById('signout_button').style.visibility = 'hidden';
+  // document.getElementById('signout_button').style.visibility = 'hidden';
 
   /**
    * Callback after api.js is loaded.
@@ -57,7 +57,7 @@ let accessToken = null;
         throw (response);
       }
       accessToken = response.access_token;
-      document.getElementById('signout_button').style.visibility = 'visible';
+      // document.getElementById('signout_button').style.visibility = 'visible';
       document.getElementById('authorize_button').innerText = 'Refresh';
       await createPicker(callback);
     };
@@ -81,7 +81,7 @@ let accessToken = null;
       google.accounts.oauth2.revoke(accessToken);
       document.getElementById('content').innerText = '';
       document.getElementById('authorize_button').innerText = 'Authorize';
-      document.getElementById('signout_button').style.visibility = 'hidden';
+      // document.getElementById('signout_button').style.visibility = 'hidden';
     }
   }
 

@@ -5,6 +5,9 @@
     <meta charset="utf-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Walter+Turncoat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
@@ -16,7 +19,6 @@
         data-callback="initClient"
         data-auto_prompt="false">
     </div> -->
-
       <div class="g_id_signin"
           data-type="standard"
           data-shape="rectangular"
@@ -25,16 +27,32 @@
           data-size="large"
           data-logo_alignment="left">
       </div>
-        <div style="position: absolute; right: 50vw; top: 50vh;">
-          <button id="authorize_button" onclick="getParentFolder();">Get Parent Folder</button>
-          <button onclick="createTimeRelativeDocument();">Test</button>
-          <button id="signout_button" onclick="handleSignoutClick();">Revoke token</button>
+      <h1 id="MainTitle">Drive Sorter</h1>
+      <img src="doc_icon.png" class="doc_icon" alt="">
+      <img src="cog_wheel.png" class="cog" alt="">
+      <img src="icon.png" class="icon" alt="">
+      <img src="cog_wheel.png" class="doc_cog" alt="">
+      <img src="sheets_icon.png" class="sheets_icon" alt="">
+      <img src="cog_wheel.png" class="sheets_cog" alt="">
+      <div style="position: fixed; left: 0; top: 0;">  
+      <div id="MainCenterButtons">
+          <button class="colorful-btn" id="authorize_button" onclick="getParentFolder();">Get Parent Folder</button>
+          <button class="colorful-btn hidden" id="time_doc_btn" onclick="createTimeRelativeDocument();">Test</button>
+          <!-- <button id="signout_button" onclick="handleSignoutClick();">Revoke token</button> -->
       </div>
-      <div id="DaySelector" class="hidden">
-        <p>A or E Day</p>
-        <button id="ADayButton">A</button>
-        <button id="EDayButton">E</button>
+    </div>
+      <div class="hidden" id="day_background">
+      <div id="DaySelector" class="center">
+        <div>
+          <p>A or E Day?</p>
+        <div class="day_buttons">
+          <button id="ADayButton">A</button>
+          <button id="EDayButton">E</button>
+        </div>
+
+        </div>
       </div>
+    </div>
     <script src="js/index.js"></script>
     <script src="js/picker_api.js"></script>
       <script src="js/drive_api.js"></script>
