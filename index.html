@@ -29,15 +29,16 @@
       </div>
       <h1 id="MainTitle">Drive Sorter</h1>
       <img src="doc_icon.png" class="doc_icon" alt="">
-      <img src="cog_wheel.png" class="cog" alt="">
-      <img src="icon.png" class="icon" alt="">
       <img src="cog_wheel.png" class="doc_cog" alt="">
+      <img src="icon.png" class="icon" alt="">
+      <img src="cog_wheel.png" class="cog" alt="">
       <img src="sheets_icon.png" class="sheets_icon" alt="">
       <img src="cog_wheel.png" class="sheets_cog" alt="">
       <div style="position: fixed; left: 0; top: 0;">  
       <div id="MainCenterButtons">
           <button class="colorful-btn" id="authorize_button" onclick="getParentFolder();">Get Parent Folder</button>
-          <button class="colorful-btn hidden" id="time_doc_btn" onclick="createTimeRelativeDocument();">Test</button>
+          <button class="colorful-btn hidden" id="timeDocBtn" onclick="createTimeRelativeDocument();">Create Document</button>
+          <button class="colorful-btn hidden" style="margin-bottom: -9vw;" id="sortFileBtn" onclick="sortFiles();">Sort Files</button>
           <!-- <button id="signout_button" onclick="handleSignoutClick();">Revoke token</button> -->
       </div>
     </div>

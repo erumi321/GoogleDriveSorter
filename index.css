@@ -54,7 +54,7 @@
     animation-timing-function: linear;
     animation-direction: reverse;
 }
-.cog {
+.doc_cog {
     width: 4.85vw;
     height: 4.85vw;
     margin-left: -4.2vw;
@@ -64,7 +64,7 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-.doc_cog {
+.cog {
     width: 5.5vw;
     height: 5.5vw;
     margin-left: -5.2vw;

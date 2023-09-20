@@ -1,3 +1,12 @@
+let file_id ={
+    "Math": null,
+    "History": null,
+    "Physics": null,
+    "Computer Science": null,
+    "English": null,
+    "French": null,
+}
+
 let timeBlock = {
     "A": {
         "N": { //normal day
@@ -34,17 +43,12 @@ function submitTimeRelativeDocument(schoolDay) {
     for (const [key, value] of Object.entries(timeBlock[schoolDay][schoolDayType])) {
         let t = time - key
         if (t <= 0) {
-            API_GETWORKINGDRIVE((drive) => {
-                drive.files.forEach((file) => {
-                    if (file.name == value) {
-                        let parentId = file.id
-                        API_CREATEDOC("New Doc", [parentId], (doc) => {
-                            window.open("https://docs.google.com/document/d/" + doc.id + "/edit", "_blank")
-                        })
-                    }
+            if (value in file_id) {
+                let parentId = file_id[value]
+                API_CREATEDOC("New Doc", [parentId], (doc) => {
+                    window.open("https://docs.google.com/document/d/" + doc.id + "/edit", "_blank")
                 })
-            })
-
+            }
             break;
         }
     }
@@ -59,6 +63,34 @@ function createTimeRelativeDocument() {
 function getParentFolder() {
     handleAuthClick((id) => {
         DRIVE_BASE_FOLDER = id
-        document.getElementById("time_doc_btn").classList.remove("hidden")
+        API_GETWORKINGDRIVE((drive) => {
+            drive.files.forEach((folder) => {
+                if (folder.name in file_id) {
+                    file_id[folder.name] = folder.id
+                }
+            })
+            document.getElementById("timeDocBtn").classList.remove("hidden")
+            document.getElementById("sortFileBtn").classList.remove("hidden")
+        })
     })
+}
+
+function sortFiles() {
+    API_GETRECENTFILES((files) => {
+        console.log(files)
+        files.forEach((file) => {
+            let sName = file.name.split("/")
+            if (sName.length > 1) {
+                let cleanName = sName[0].trim()
+                if(cleanName in file_id) {
+                    console.log("yes: " + file.name)
+                    let newName = sName.slice(1).join('')
+                    console.log(newName)
+                    API_ADDPARENT(file.id, file_id[cleanName], newName, (response) => {
+                        console.log(response)
+                    })
+                }
+            }
+        })
+    })   
 }

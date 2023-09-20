@@ -5,7 +5,6 @@ let accessToken = null;
   let pickerInited = false;
   let gisInited = false;
 
-
   document.getElementById('authorize_button').style.visibility = 'hidden';
   // document.getElementById('signout_button').style.visibility = 'hidden';
 
@@ -62,14 +61,7 @@ let accessToken = null;
       await createPicker(callback);
     };
 
-    if (accessToken === null) {
-      // Prompt the user to select a Google Account and ask for consent to share their data
-      // when establishing a new session.
-      tokenClient.requestAccessToken({prompt: 'consent'});
-    } else {
-      // Skip display of account chooser and consent dialog for an existing session.
-      tokenClient.requestAccessToken({prompt: ''});
-    }
+    tokenClient.requestAccessToken({prompt: ''});
   }
 
   /**
@@ -114,10 +106,8 @@ let accessToken = null;
   async function pickerCallback(callback, data) {
     if (data.action === google.picker.Action.PICKED) {
       let text = `Picker response: \n${JSON.stringify(data, null, 2)}\n`;
-      console.log(text)
       const document = data.docs[0];
       const fileId = document.id;
-      console.log(fileId);
       callback(fileId)
     }
   }
