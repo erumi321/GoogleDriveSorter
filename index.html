@@ -42,6 +42,12 @@
           <!-- <button id="signout_button" onclick="handleSignoutClick();">Revoke token</button> -->
       </div>
     </div>
+    <div id="failWindow" class="popup-window center hidden">
+      <h1 class="popup-title">Failed to sort: </h1>
+      <button class="popup-close" onclick="closePopupWindow('failWindow')">Close</button>
+      <div id="fail-container">
+      </div>
+    </div>
       <div class="hidden" id="day_background">
       <div id="DaySelector" class="center">
         <div>

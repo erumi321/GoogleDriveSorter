@@ -109,7 +109,6 @@ body {
     height: 3vw;
     margin-left: 1vw;
     margin-top: 30vh;
-    border-radius: 20px;
     border: 3px solid;
     background-clip: padding-box;
     padding: 10px;
@@ -117,6 +116,7 @@ body {
     box-shadow: 0 3px 9px black, inset 0 0 9px white;
     border: 4px solid transparent;
     border-radius: 16px;
+    transition: box-shadow margin-top 0.3s;
 }
 
 .colorful-btn::after {
@@ -127,6 +127,12 @@ body {
     content: '';
     z-index: -1;
     border-radius: 16px;
+}
+
+.colorful-btn:active {
+    box-shadow: none;
+    margin-top: calc(30vh + 9px);
+    transition: box-shadow margin-top 0.3s;
 }
 
 #day_background {
@@ -189,6 +195,129 @@ body {
 
 #EDayButton {
     background-color: #0F9D58;
+}
+
+.popup-window {
+    position: absolute;
+    width: calc(56vw - 7vh);
+    height: 56vh;
+    left: calc(50vw - 0.5 * (56vw - 7vh));
+    top: 22vh;
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box;
+    padding: 10px;
+    z-index: 1;
+}
+
+.popup-window::before {
+    position: absolute;
+    top: -4px; bottom: -4px;
+    left: -4px; right: -4px;
+    background:  linear-gradient(66deg, #4285F4 25%, #DB4437 25%, #DB4437 50%,#F4B400 50%, #F4B400 75%, #0F9D58 75%);
+    content: '';
+    z-index: -2;
+    border-radius: 16px;
+}
+.popup-window::after {
+    position: absolute;
+    top: 1px; bottom: 1px;
+    left: 1px; right: 1px;
+    background: #a0a0a0;
+    content: '';
+    z-index: -1;
+    border-radius: 16px;
+}
+
+.popup-window * {
+    z-index: 2;
+    color: #fff;
+}
+
+.popup-window-fadein {
+    -webkit-animation: fadein 0.5s ease-in; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.5s ease-in; /* Firefox < 16 */
+        -ms-animation: fadein 0.5s ease-in; /* Internet Explorer */
+         -o-animation: fadein 0.5s ease-in; /* Opera < 12.1 */
+            animation: fadein 0.5s ease-in;
+}
+
+.popup-window-fadeout {
+    -webkit-animation: fadeout 0.5s ease-in; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadeout 0.5s ease-in; /* Firefox < 16 */
+        -ms-animation: fadeout 0.5s ease-in; /* Internet Explorer */
+         -o-animation: fadeout 0.5s ease-in; /* Opera < 12.1 */
+            animation: fadeout 0.5s ease-in;
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.popup-title {
+    font-size: 2.75em;
+    font-weight: 600;
+    position: absolute;
+    top: -2.5vh;
+}
+
+.popup-close {
+    position: absolute;
+    bottom: 2vh;
+    width: 4vw;
+    left: calc((56vw - 7vh) / 2 - 2vw);
+    background-color: #DB4437;
+    color: #fff;
+    box-shadow: 0 3px 3px #421511;
+    border: 2px solid #000000aa;
+    border-radius: 16px;
+    transition: box-shadow margin-top 0.1s;
+}
+
+.popup-close:active {
+    box-shadow: none;
+    bottom: calc(2vh - 3px);
+    transition: box-shadow margin-top 0.1s;
+}
+
+#fail-container {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+}
+
+.fail-card {
+    margin: 0;
+    font-size: 1.3em;
+    margin-left: -1vw;
 }
 
 .center {

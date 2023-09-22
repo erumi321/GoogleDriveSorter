@@ -43,7 +43,7 @@ function submitTimeRelativeDocument(schoolDay) {
     for (const [key, value] of Object.entries(timeBlock[schoolDay][schoolDayType])) {
         let t = time - key
         if (t <= 0) {
-            if (value in file_id) {
+            if (value in file_id && file_id[value] != null) {
                 let parentId = file_id[value]
                 API_CREATEDOC("New Doc", [parentId], (doc) => {
                     window.open("https://docs.google.com/document/d/" + doc.id + "/edit", "_blank")
@@ -77,20 +77,53 @@ function getParentFolder() {
 
 function sortFiles() {
     API_GETRECENTFILES((files) => {
-        console.log(files)
+        var failed_files = []
         files.forEach((file) => {
             let sName = file.name.split("/")
             if (sName.length > 1) {
                 let cleanName = sName[0].trim()
-                if(cleanName in file_id) {
-                    console.log("yes: " + file.name)
+                if(cleanName in file_id && file_id[cleanName] != null) {
                     let newName = sName.slice(1).join('')
-                    console.log(newName)
                     API_ADDPARENT(file.id, file_id[cleanName], newName, (response) => {
-                        console.log(response)
+                        // console.log(response)
                     })
+                }else{
+                    failed_files.push(file.name)
                 }
             }
         })
+        console.log(files)
+        if (failed_files.length > 0) {
+            var parent = document.getElementById("fail-container");
+            while (parent.firstChild) {
+                parent.removeChild(parent.lastChild);
+            }
+            for(var i = 0; i < failed_files.length; i++) {
+                var p = document.createElement("p");
+                p.classList.add("fail-card");
+                p.innerText = failed_files[i];
+                parent.appendChild(p);
+            }
+            
+            openPopupWindow("failWindow");
+
+        }
+        alert("Done")
     })   
+}
+
+function openPopupWindow(id) {
+    var w = document.getElementById(id);
+    w.classList.remove("hidden")
+    w.classList.add("popup-window-fadein");
+}
+
+function closePopupWindow(id) {
+    var w = document.getElementById(id);
+    w.classList.add("popup-window-fadeout");
+    w.classList.remove("popup-window-fadein");
+    setTimeout(() => {
+        w.classList.remove("popup-window-fadeout");
+        w.classList.add("hidden");
+    }, 475);
 }
