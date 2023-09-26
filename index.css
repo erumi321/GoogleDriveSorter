@@ -135,15 +135,6 @@ body {
     transition: box-shadow margin-top 0.3s;
 }
 
-#day_background {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: #00000080;
-}
-
 #DaySelector {
     position: absolute;
     left: calc(50vw - 15vw);
@@ -190,11 +181,45 @@ body {
 }
 
 #ADayButton {
+    position: absolute;
+    bottom: -43vh;
+    width: 4vw;
+    height: 3vh;
+    left: -2vw;
     background-color: #DB4437;
+    color: #fff;
+    box-shadow: 0 3px 3px #421511;
+    border: 2px solid #000000aa;
+    border-radius: 16px;
+    transition: box-shadow margin-top 0.1s;
+    font-size: 0.4em;
+}
+
+#ADayButton:active {
+    box-shadow: none;
+    bottom: calc(-43vh - 3px);
+    transition: box-shadow margin-top 0.1s;
 }
 
 #EDayButton {
+    position: absolute;
+    bottom: -43vh;
+    width: 4vw;
+    height: 3vh;
+    left: 10vw;
     background-color: #0F9D58;
+    color: #fff;
+    box-shadow: 0 3px 3px #421511;
+    border: 2px solid #000000aa;
+    border-radius: 16px;
+    transition: box-shadow margin-top 0.1s;
+    font-size: 0.4em;
+}
+
+#EDayButton:active {
+    box-shadow: none;
+    bottom: calc(-43vh - 3px);
+    transition: box-shadow margin-top 0.1s;
 }
 
 .popup-window {

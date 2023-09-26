@@ -66,8 +66,8 @@ function API_CREATEDOC(name, parents, callback) {
 function API_GETRECENTFILES(callback) {
     var xhr = new XMLHttpRequest();
 
-    var criteria = "mimeType%20%3D%20%27application%2Fvnd.google-apps.document%27%20or%20mimeType%20%3D%20%27application%2Fvnd.google-apps.spreadsheet%27%20or%20mimeType%20%3D%20%27application%2Fvnd.google-apps.form%27%20and%20trashed%20%3D%20false"
-    xhr.open('GET', "https://www.googleapis.com/drive/v3/files?orderBy=createdTime&q=" + criteria + "&key=" + DRIVE_API_KEY);
+    var criteria = "trashed = false and (mimeType = 'application/vnd.google-apps.document' or mimeType = 'application/vnd.google-apps.spreadsheet' or mimeType = 'application/vnd.google-apps.form')"
+    xhr.open('GET', "https://www.googleapis.com/drive/v3/files?orderBy=createdTime&q=" + encodeURIComponent(criteria) + "&key=" + DRIVE_API_KEY);
     xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
     xhr.setRequestHeader('Accept', 'application/json');
 

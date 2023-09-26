@@ -37,7 +37,7 @@
       <div style="position: fixed; left: 0; top: 0;">  
       <div id="MainCenterButtons">
           <button class="colorful-btn" id="authorize_button" onclick="getParentFolder();">Get Parent Folder</button>
-          <button class="colorful-btn hidden" id="timeDocBtn" onclick="createTimeRelativeDocument();">Create Document</button>
+          <button class="colorful-btn hidden" id="timeDocBtn" onclick="openPopupWindow('day_background');">Create Document</button>
           <button class="colorful-btn hidden" style="margin-bottom: -9vw;" id="sortFileBtn" onclick="sortFiles();">Sort Files</button>
           <!-- <button id="signout_button" onclick="handleSignoutClick();">Revoke token</button> -->
       </div>
@@ -48,17 +48,14 @@
       <div id="fail-container">
       </div>
     </div>
-      <div class="hidden" id="day_background">
-      <div id="DaySelector" class="center">
-        <div>
-          <p>A or E Day?</p>
-        <div class="day_buttons">
-          <button id="ADayButton">A</button>
-          <button id="EDayButton">E</button>
-        </div>
-
-        </div>
-      </div>
+      <div class="popup-window center hidden" id="day_background">
+          <h1 class="popup-title">A or E Day?</p>
+          <button id="ADayButton" onclick="submitTimeRelativeDocument('A')">A</button>
+          <button id="EDayButton" onclick="submitTimeRelativeDocument('E')">E</button>
+    </div>
+    <div id="successWindow" class="popup-window center hidden">
+      <h1 class="popup-title">Success</h1>
+      <button class="popup-close" onclick="closePopupWindow('successWindow')">Close</button>
     </div>
     <script src="js/index.js"></script>
     <script src="js/picker_api.js"></script>

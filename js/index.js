@@ -34,7 +34,7 @@ let timeBlock = {
 }
 
 function submitTimeRelativeDocument(schoolDay) {
-    document.getElementById("day_background").classList.add("hidden")
+    closePopupWindow("day_background")
     let d = new Date()
     let hours = d.getHours()
     let minutes = d.getMinutes()
@@ -52,12 +52,6 @@ function submitTimeRelativeDocument(schoolDay) {
             break;
         }
     }
-}
-
-function createTimeRelativeDocument() {
-    document.getElementById("day_background").classList.remove("hidden")
-    document.getElementById("ADayButton").setAttribute("onclick", "submitTimeRelativeDocument('A')")
-    document.getElementById("EDayButton").setAttribute("onclick", "submitTimeRelativeDocument('E')")
 }
 
 function getParentFolder() {
@@ -92,7 +86,6 @@ function sortFiles() {
                 }
             }
         })
-        console.log(files)
         if (failed_files.length > 0) {
             var parent = document.getElementById("fail-container");
             while (parent.firstChild) {
@@ -107,8 +100,9 @@ function sortFiles() {
             
             openPopupWindow("failWindow");
 
+        }else{
+            openPopupWindow("successWindow")
         }
-        alert("Done")
     })   
 }
 
