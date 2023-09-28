@@ -352,6 +352,83 @@ body {
   
 }
 
+#settings-bar {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: -16vw;
+    width: 20vw;
+    background-color: #ccc;
+    border-radius: 30px;
+    transition: left 0.4s ease-in;
+}
+
+#settings-bar.extended {
+    left: -2vw;
+    transition: left 0.4s ease-in;
+}
+@keyframes settings-rotate {
+    0% {transform: scale(2) rotate(0deg);}
+    100% {transform: scale(2) rotate(120deg);}
+}
+.material-symbols-outlined {
+    position: absolute;
+    transform: scale(2);
+    margin-top: 2vh;
+    margin-left: 0.6vw;
+    right: 1vw;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+  .material-symbols-outlined-fill {
+    position: absolute;
+    transform: scale(2);
+    margin-top: 2vh;
+    margin-left: 0.6vw;
+    right: 1vw;
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+.settings-cog-rotate-inv {
+    animation-name: settings-rotate;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-direction: reverse;
+}
+.settings-cog-rotate {
+    animation-name: settings-rotate;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+#settings-list {
+    position: absolute;
+    left: 3vw;
+    top: 3vh;
+    width: 13vw;
+    height: 100%;
+    text-align: left;
+}
+
+.settings-card {
+    margin-left: 0.3vw;
+}
+.settings-card p {
+    margin-bottom: 0.3vh;
+}
+.settings-card input {
+    width: 11vw;
+    border-radius: 10px;
+}
+
 .hidden {
     display: none !important;
 }

@@ -7,6 +7,15 @@ let file_id ={
     "French": null,
 }
 
+let child_id = {
+    "Math": null,
+    "History": null,
+    "Physics": null,
+    "Computer Science": null,
+    "English": null,
+    "French": null,
+}
+
 let timeBlock = {
     "A": {
         "N": { //normal day
@@ -31,6 +40,33 @@ let timeBlock = {
         }
     }
 
+}
+loadSubjectFolders()
+function loadSubjectFolders() {
+    child_id["Math"] = localStorage.getItem("Math-folder")
+    if (child_id["Math"] != null) {
+        document.getElementById("MathFolder").value = child_id["Math"]
+    }
+    child_id["History"] = localStorage.getItem("History-folder")
+    if (child_id["History"] != null) {
+        document.getElementById("HistoryFolder").value = child_id["History"]
+    }
+    child_id["Physics"] = localStorage.getItem("Physics-folder")
+    if (child_id["Physics"] != null) {
+        document.getElementById("PhysicsFolder").value = child_id["Physics"]
+    }
+    child_id["Computer Science"] = localStorage.getItem("Computer Science-folder")
+    if (child_id["Computer Science"] != null) {
+        document.getElementById("CompSciFolder").value = child_id["Computer Science"]
+    }
+    child_id["English"] = localStorage.getItem("English-folder")
+    if (child_id["English"] != null) {
+        document.getElementById("EnglishFolder").value = child_id["English"]
+    }
+    child_id["French"] = localStorage.getItem("French-folder")
+    if (child_id["French"] != null) {
+        document.getElementById("FrenchFolder").value = child_id["French"]
+    }
 }
 
 function submitTimeRelativeDocument(schoolDay) {
@@ -60,7 +96,14 @@ function getParentFolder() {
         API_GETWORKINGDRIVE((drive) => {
             drive.files.forEach((folder) => {
                 if (folder.name in file_id) {
-                    file_id[folder.name] = folder.id
+                    if (child_id[folder.name] != null) {
+                        console.log("go")
+                        API_GETCHILDFOLDER(child_id[folder.name], folder.id, (child_folder) => {
+                            file_id[folder.name] = child_folder.id
+                        })
+                    }else{
+                        file_id[folder.name] = folder.id
+                    }
                 }
             })
             document.getElementById("timeDocBtn").classList.remove("hidden")
@@ -120,4 +163,28 @@ function closePopupWindow(id) {
         w.classList.remove("popup-window-fadeout");
         w.classList.add("hidden");
     }, 475);
+}
+
+function extendedSettings() {
+    var bar = document.getElementById('settings-bar');
+    if(bar.classList.contains('extended')){
+        document.getElementById('settings-cog').classList.add('settings-cog-rotate-inv');
+        setTimeout(() => {
+            document.getElementById('settings-cog').classList.remove("settings-cog-rotate-inv");
+        }, 1195);
+        document.getElementById('settings-cog').classList.remove('material-symbols-outlined-fill');
+        bar.classList.remove('extended');
+    }else{
+        document.getElementById('settings-cog').classList.add('settings-cog-rotate');
+        setTimeout(() => {
+            document.getElementById('settings-cog').classList.remove("settings-cog-rotate");
+        }, 1195);
+        document.getElementById('settings-cog').classList.add('material-symbols-outlined-fill');
+        bar.classList.add('extended');
+    }
+}
+
+function setSubjectFolder(subject, field) {
+    console.log("ok")
+    localStorage.setItem(subject + "-folder", field.value)
 }

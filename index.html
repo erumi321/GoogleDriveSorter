@@ -9,8 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Walter+Turncoat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined+Fill:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
-  <body>
+  <body onload="">
     <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
     <!-- <div id="g_id_onload"
         data-client_id="660437883218-87b4c7jvt14pljlhj7gdmiul60bf0m30.apps.googleusercontent.com"
@@ -56,6 +58,40 @@
     <div id="successWindow" class="popup-window center hidden">
       <h1 class="popup-title">Success</h1>
       <button class="popup-close" onclick="closePopupWindow('successWindow')">Close</button>
+    </div>
+    <div class="" id="settings-container">
+      <div id="settings-bar">
+        <div id="settings-list" class="">
+          <div class="settings-card">
+            <p>Math</p>
+            <input id="MathFolder" type="text" onchange="setSubjectFolder('Math', this)">
+          </div>
+          <div class="settings-card">
+            <p>History</p>
+            <input id="HistoryFolder" type="text" onchange="setSubjectFolder('History', this)">
+          </div>
+          <div class="settings-card">
+            <p>Physics</p>
+            <input id="PhysicsFolder" type="text" onchange="setSubjectFolder('Physics', this)">
+          </div>
+          <div class="settings-card">
+            <p>Computer Science</p>
+            <input id="CompSciFolder" type="text" onchange="setSubjectFolder('Computer Science', this)">
+          </div>
+          <div class="settings-card">
+            <p>English</p>
+            <input id="EnglishFolder" type="text" onchange="setSubjectFolder('English', this)">
+          </div>
+          <div class="settings-card">
+            <p>French</p>
+            <input id="FrenchFolder" type="text" onchange="setSubjectFolder('French', this)">
+          </div>
+        </div>
+        <span id="settings-cog" class="material-symbols-outlined" onclick="extendedSettings()">
+          settings
+          </span>
+      </div>
+
     </div>
     <script src="js/index.js"></script>
     <script src="js/picker_api.js"></script>

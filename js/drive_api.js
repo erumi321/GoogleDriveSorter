@@ -65,14 +65,38 @@ function API_CREATEDOC(name, parents, callback) {
 
 function API_GETRECENTFILES(callback) {
     var xhr = new XMLHttpRequest();
-
-    var criteria = "trashed = false and (mimeType = 'application/vnd.google-apps.document' or mimeType = 'application/vnd.google-apps.spreadsheet' or mimeType = 'application/vnd.google-apps.form')"
-    xhr.open('GET', "https://www.googleapis.com/drive/v3/files?orderBy=createdTime&q=" + encodeURIComponent(criteria) + "&key=" + DRIVE_API_KEY);
+    var date = new Date();
+    date.setDate(date.getDate() - 1);
+    var orderBy = "createdTime desc"
+    var criteria = "modifiedTime > '" + date.toISOString() + "' and trashed = false and (mimeType = 'application/vnd.google-apps.document' or mimeType = 'application/vnd.google-apps.spreadsheet' or mimeType = 'application/vnd.google-apps.form')"
+    xhr.open('GET', "https://www.googleapis.com/drive/v3/files?orderBy=" + encodeURIComponent(orderBy) + "&q=" + encodeURIComponent(criteria) + "&key=" + DRIVE_API_KEY);
     xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
     xhr.setRequestHeader('Accept', 'application/json');
 
     xhr.onreadystatechange = (response) => {
         if(xhr.readyState == XMLHttpRequest.DONE){
+            let responseJSON = JSON.parse(response.target.response)
+            console.log(responseJSON)
+            callback(responseJSON.files)
+        }
+    }
+
+    xhr.send();
+}
+
+function API_GETCHILDFOLDER(name, parent_id, callback) {
+    console.log("getchild")
+    var xhr = new XMLHttpRequest();
+    var critera = "mimeType = 'application/vnd.google-apps.folder' and '"+ parent_id +"' in parents and name='" + name +"'"
+    let url = "https://www.googleapis.com/drive/v3/files?corpora=user&orderBy=folder&q=" + encodeURIComponent(critera) + "&key="
+
+    xhr.open('GET', url + DRIVE_API_KEY);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+    xhr.setRequestHeader('Accept', 'application/json');
+
+    xhr.onreadystatechange = (response) => {
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            console.log("AHHHHHH")
             let responseJSON = JSON.parse(response.target.response)
             console.log(responseJSON)
             callback(responseJSON.files)
