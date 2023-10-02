@@ -85,7 +85,6 @@ function API_GETRECENTFILES(callback) {
 }
 
 function API_GETCHILDFOLDER(name, parent_id, callback) {
-    console.log("getchild")
     var xhr = new XMLHttpRequest();
     var critera = "mimeType = 'application/vnd.google-apps.folder' and '"+ parent_id +"' in parents and name='" + name +"'"
     let url = "https://www.googleapis.com/drive/v3/files?corpora=user&orderBy=folder&q=" + encodeURIComponent(critera) + "&key="
@@ -96,10 +95,9 @@ function API_GETCHILDFOLDER(name, parent_id, callback) {
 
     xhr.onreadystatechange = (response) => {
         if(xhr.readyState == XMLHttpRequest.DONE){
-            console.log("AHHHHHH")
             let responseJSON = JSON.parse(response.target.response)
             console.log(responseJSON)
-            callback(responseJSON.files)
+            callback(responseJSON.files[0])
         }
     }
 

@@ -4,9 +4,11 @@
     font-weight: 500;
     font-size: 1em;
 }
-
+input:focus {
+    outline: none !important;
+}
 #MainTitle {
-    margin-left: -0.25vw;
+    margin-left: -1.25vw;
     margin-top: 10vh;
     font-family: 'Walter Turncoat', cursive;
     font-size: 6em;
@@ -101,6 +103,7 @@ body {
     padding: 0;
     left: 0;
     top: 0;
+    margin-left: -1.5vw;
 }
 
 .colorful-btn {
@@ -182,43 +185,43 @@ body {
 
 #ADayButton {
     position: absolute;
-    bottom: -43vh;
+    bottom: 1vh;
     width: 4vw;
     height: 3vh;
-    left: -2vw;
+    margin-right: 5vw;
     background-color: #DB4437;
     color: #fff;
     box-shadow: 0 3px 3px #421511;
     border: 2px solid #000000aa;
     border-radius: 16px;
     transition: box-shadow margin-top 0.1s;
-    font-size: 0.4em;
+    font-size: 1em;
 }
 
 #ADayButton:active {
     box-shadow: none;
-    bottom: calc(-43vh - 3px);
+    bottom: calc(1vh + 3px);
     transition: box-shadow margin-top 0.1s;
 }
 
 #EDayButton {
     position: absolute;
-    bottom: -43vh;
+    bottom: 1vh;
     width: 4vw;
     height: 3vh;
-    left: 10vw;
+    margin-left: 5vw;
     background-color: #0F9D58;
     color: #fff;
     box-shadow: 0 3px 3px #421511;
     border: 2px solid #000000aa;
     border-radius: 16px;
     transition: box-shadow margin-top 0.1s;
-    font-size: 0.4em;
+    font-size: 1em;
 }
 
 #EDayButton:active {
     box-shadow: none;
-    bottom: calc(-43vh - 3px);
+    bottom: calc(1vh + 3px);
     transition: box-shadow margin-top 0.1s;
 }
 
@@ -354,18 +357,25 @@ body {
 
 #settings-bar {
     position: fixed;
-    height: 100%;
-    top: 0;
+    height: 1000vh;
+    top: -3vh;
     left: -16vw;
-    width: 20vw;
+    padding-top: 6vh;
+    width: 18vw;
     background-color: #ccc;
+    border: #000 12px solid;
     border-radius: 30px;
-    transition: left 0.4s ease-in;
+    transition: all 0.4s ease-in;
 }
 
 #settings-bar.extended {
     left: -2vw;
-    transition: left 0.4s ease-in;
+    height: 96vh;
+    top: 0vh;
+    padding-top: 3vh;
+    background-color: #8c8cbf;
+    border: #000 4px solid;
+    transition: all 0.4s ease-in;
 }
 @keyframes settings-rotate {
     0% {transform: scale(2) rotate(0deg);}
@@ -374,9 +384,9 @@ body {
 .material-symbols-outlined {
     position: absolute;
     transform: scale(2);
-    margin-top: 2vh;
+    margin-top: 1vh;
     margin-left: 0.6vw;
-    right: 1vw;
+    right: 0.8vw;
     font-variation-settings:
     'FILL' 0,
     'wght' 400,
@@ -386,9 +396,9 @@ body {
   .material-symbols-outlined-fill {
     position: absolute;
     transform: scale(2);
-    margin-top: 2vh;
+    margin-top: 1vh;
     margin-left: 0.6vw;
-    right: 1vw;
+    right: 0.8vw;
     font-variation-settings:
     'FILL' 1,
     'wght' 400,
@@ -412,7 +422,7 @@ body {
 #settings-list {
     position: absolute;
     left: 3vw;
-    top: 3vh;
+    top: 4vh;
     width: 13vw;
     height: 100%;
     text-align: left;
@@ -427,6 +437,18 @@ body {
 .settings-card input {
     width: 11vw;
     border-radius: 10px;
+    border-color: black;
+}
+
+
+.newfile-input {
+    color: initial;
+    position: absolute;
+    border-radius: 10px;
+    width: 15vw;
+    height: 1.5vw;
+    margin: auto auto;
+    top: 25vh;
 }
 
 .hidden {

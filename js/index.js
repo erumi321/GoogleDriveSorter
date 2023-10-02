@@ -1,3 +1,12 @@
+let base_id = {
+    "Math": null,
+    "History": null,
+    "Physics": null,
+    "Computer Science": null,
+    "English": null,
+    "French": null
+}
+
 let file_id ={
     "Math": null,
     "History": null,
@@ -7,7 +16,7 @@ let file_id ={
     "French": null,
 }
 
-let child_id = {
+let child_name = {
     "Math": null,
     "History": null,
     "Physics": null,
@@ -43,29 +52,29 @@ let timeBlock = {
 }
 loadSubjectFolders()
 function loadSubjectFolders() {
-    child_id["Math"] = localStorage.getItem("Math-folder")
-    if (child_id["Math"] != null) {
-        document.getElementById("MathFolder").value = child_id["Math"]
+    child_name["Math"] = localStorage.getItem("Math-folder")
+    if (child_name["Math"] != null && child_name["Math"] != "") {
+        document.getElementById("MathFolder").value = child_name["Math"]
     }
-    child_id["History"] = localStorage.getItem("History-folder")
-    if (child_id["History"] != null) {
-        document.getElementById("HistoryFolder").value = child_id["History"]
+    child_name["History"] = localStorage.getItem("History-folder")
+    if (child_name["History"] != null && child_name["History"] != "") {
+        document.getElementById("HistoryFolder").value = child_name["History"]
     }
-    child_id["Physics"] = localStorage.getItem("Physics-folder")
-    if (child_id["Physics"] != null) {
-        document.getElementById("PhysicsFolder").value = child_id["Physics"]
+    child_name["Physics"] = localStorage.getItem("Physics-folder")
+    if (child_name["Physics"] != null && child_name["Physics"] != "") {
+        document.getElementById("PhysicsFolder").value = child_name["Physics"]
     }
-    child_id["Computer Science"] = localStorage.getItem("Computer Science-folder")
-    if (child_id["Computer Science"] != null) {
-        document.getElementById("CompSciFolder").value = child_id["Computer Science"]
+    child_name["Computer Science"] = localStorage.getItem("Computer Science-folder")
+    if (child_name["Computer Science"] != null && child_name["Computer Science"] != "") {
+        document.getElementById("CompSciFolder").value = child_name["Computer Science"]
     }
-    child_id["English"] = localStorage.getItem("English-folder")
-    if (child_id["English"] != null) {
-        document.getElementById("EnglishFolder").value = child_id["English"]
+    child_name["English"] = localStorage.getItem("English-folder")
+    if (child_name["English"] != null && child_name["English"] != "") {
+        document.getElementById("EnglishFolder").value = child_name["English"]
     }
-    child_id["French"] = localStorage.getItem("French-folder")
-    if (child_id["French"] != null) {
-        document.getElementById("FrenchFolder").value = child_id["French"]
+    child_name["French"] = localStorage.getItem("French-folder")
+    if (child_name["French"] != null && child_name["French"] != "") {
+        document.getElementById("FrenchFolder").value = child_name["French"]
     }
 }
 
@@ -81,7 +90,11 @@ function submitTimeRelativeDocument(schoolDay) {
         if (t <= 0) {
             if (value in file_id && file_id[value] != null) {
                 let parentId = file_id[value]
-                API_CREATEDOC("New Doc", [parentId], (doc) => {
+                let title = document.getElementById("NewFileName").value;
+                if (title == "") {
+                    title = "New Doc"
+                }
+                API_CREATEDOC(title, [parentId], (doc) => {
                     window.open("https://docs.google.com/document/d/" + doc.id + "/edit", "_blank")
                 })
             }
@@ -96,11 +109,13 @@ function getParentFolder() {
         API_GETWORKINGDRIVE((drive) => {
             drive.files.forEach((folder) => {
                 if (folder.name in file_id) {
-                    if (child_id[folder.name] != null) {
-                        console.log("go")
-                        API_GETCHILDFOLDER(child_id[folder.name], folder.id, (child_folder) => {
+                    base_id[folder.name] = folder.id
+                    if (child_name[folder.name] != null && child_name[folder.name] != "") {
+                        console.log("Getting child folder for: " + folder.name)
+                        API_GETCHILDFOLDER(child_name[folder.name], folder.id, (child_folder) => {
                             file_id[folder.name] = child_folder.id
-                        })
+                        console.log("Got child folder: " + child_folder.name)
+                    })
                     }else{
                         file_id[folder.name] = folder.id
                     }
@@ -185,6 +200,19 @@ function extendedSettings() {
 }
 
 function setSubjectFolder(subject, field) {
-    console.log("ok")
     localStorage.setItem(subject + "-folder", field.value)
+    loadSubjectFolders()
+    if (DRIVE_BASE_FOLDER != null && DRIVE_BASE_FOLDER != "") {
+        if (field.value != "") {
+            console.log(field.value)
+            console.log(file_id[subject])
+            API_GETCHILDFOLDER(field.value, base_id[subject], (child_folder) => {
+                file_id[subject] = child_folder.id
+                console.log("Got child folder: " + child_folder.name)
+            })
+        }else{
+            file_id[subject] = base_id[subject]
+        }
+
+    }
 }

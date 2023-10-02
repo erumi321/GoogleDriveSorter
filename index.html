@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Drive API Quickstart</title>
+    <title>Drive Sorter</title>
+    <link rel = "icon" href = 
+    "titleIcon.png" 
+            type = "image/x-icon">
     <meta charset="utf-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,12 +33,15 @@
           data-logo_alignment="left">
       </div>
       <h1 id="MainTitle">Drive Sorter</h1>
-      <img src="doc_icon.png" class="doc_icon" alt="">
-      <img src="cog_wheel.png" class="doc_cog" alt="">
-      <img src="icon.png" class="icon" alt="">
-      <img src="cog_wheel.png" class="cog" alt="">
-      <img src="sheets_icon.png" class="sheets_icon" alt="">
-      <img src="cog_wheel.png" class="sheets_cog" alt="">
+      <div style="margin-left: -3vw;">
+        <img src="doc_icon.png" class="doc_icon" alt="">
+        <img src="cog_wheel.png" class="doc_cog" alt="">
+        <img src="icon.png" class="icon" alt="">
+        <img src="cog_wheel.png" class="cog" alt="">
+        <img src="sheets_icon.png" class="sheets_icon" alt="">
+        <img src="cog_wheel.png" class="sheets_cog" alt="">
+      </div>
+
       <div style="position: fixed; left: 0; top: 0;">  
       <div id="MainCenterButtons">
           <button class="colorful-btn" id="authorize_button" onclick="getParentFolder();">Get Parent Folder</button>
@@ -51,7 +57,8 @@
       </div>
     </div>
       <div class="popup-window center hidden" id="day_background">
-          <h1 class="popup-title">A or E Day?</p>
+          <h1 class="popup-title">A or E Day?</h1>
+          <input id="NewFileName" class="newfile-input" type="text" autocomplete="off">
           <button id="ADayButton" onclick="submitTimeRelativeDocument('A')">A</button>
           <button id="EDayButton" onclick="submitTimeRelativeDocument('E')">E</button>
     </div>
@@ -64,27 +71,27 @@
         <div id="settings-list" class="">
           <div class="settings-card">
             <p>Math</p>
-            <input id="MathFolder" type="text" onchange="setSubjectFolder('Math', this)">
+            <input id="MathFolder" type="text" onchange="setSubjectFolder('Math', this)" autocomplete="off">
           </div>
           <div class="settings-card">
             <p>History</p>
-            <input id="HistoryFolder" type="text" onchange="setSubjectFolder('History', this)">
+            <input id="HistoryFolder" type="text" onchange="setSubjectFolder('History', this)" autocomplete="off">
           </div>
           <div class="settings-card">
             <p>Physics</p>
-            <input id="PhysicsFolder" type="text" onchange="setSubjectFolder('Physics', this)">
+            <input id="PhysicsFolder" type="text" onchange="setSubjectFolder('Physics', this)" autocomplete="off">
           </div>
           <div class="settings-card">
             <p>Computer Science</p>
-            <input id="CompSciFolder" type="text" onchange="setSubjectFolder('Computer Science', this)">
+            <input id="CompSciFolder" type="text" onchange="setSubjectFolder('Computer Science', this)" autocomplete="off">
           </div>
           <div class="settings-card">
             <p>English</p>
-            <input id="EnglishFolder" type="text" onchange="setSubjectFolder('English', this)">
+            <input id="EnglishFolder" type="text" onchange="setSubjectFolder('English', this)" autocomplete="off">
           </div>
           <div class="settings-card">
             <p>French</p>
-            <input id="FrenchFolder" type="text" onchange="setSubjectFolder('French', this)">
+            <input id="FrenchFolder" type="text" onchange="setSubjectFolder('French', this)" autocomplete="off">
           </div>
         </div>
         <span id="settings-cog" class="material-symbols-outlined" onclick="extendedSettings()">
