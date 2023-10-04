@@ -76,7 +76,6 @@ function API_GETRECENTFILES(callback) {
     xhr.onreadystatechange = (response) => {
         if(xhr.readyState == XMLHttpRequest.DONE){
             let responseJSON = JSON.parse(response.target.response)
-            console.log(responseJSON)
             callback(responseJSON.files)
         }
     }
@@ -96,7 +95,7 @@ function API_GETCHILDFOLDER(name, parent_id, callback) {
     xhr.onreadystatechange = (response) => {
         if(xhr.readyState == XMLHttpRequest.DONE){
             let responseJSON = JSON.parse(response.target.response)
-            console.log(responseJSON)
+
             callback(responseJSON.files[0])
         }
     }

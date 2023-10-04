@@ -137,7 +137,7 @@ function sortFiles() {
                 if(cleanName in file_id && file_id[cleanName] != null) {
                     let newName = sName.slice(1).join('')
                     API_ADDPARENT(file.id, file_id[cleanName], newName, (response) => {
-                        // console.log(response)
+                        console.log("Add parent resp", response)
                     })
                 }else{
                     failed_files.push(file.name)
@@ -204,8 +204,6 @@ function setSubjectFolder(subject, field) {
     loadSubjectFolders()
     if (DRIVE_BASE_FOLDER != null && DRIVE_BASE_FOLDER != "") {
         if (field.value != "") {
-            console.log(field.value)
-            console.log(file_id[subject])
             API_GETCHILDFOLDER(field.value, base_id[subject], (child_folder) => {
                 file_id[subject] = child_folder.id
                 console.log("Got child folder: " + child_folder.name)
