@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Walter+Turncoat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mobile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined+Fill:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
@@ -31,7 +32,7 @@
           data-logo_alignment="left">
       </div>
       <h1 id="MainTitle">Drive Sorter</h1>
-      <div style="margin-left: -3vw;">
+      <div id="CogContainer">
         <img src="doc_icon.png" class="doc_icon" alt="">
         <img src="cog_wheel.png" class="doc_cog" alt="">
         <img src="icon.png" class="icon" alt="">
@@ -50,9 +51,10 @@
     </div>
     <div id="failWindow" class="popup-window center hidden">
       <h1 class="popup-title">Failed to sort: </h1>
-      <button class="popup-close" onclick="closePopupWindow('failWindow')">Close</button>
+      
       <div id="fail-container">
       </div>
+      <button class="popup-close" onclick="closePopupWindow('failWindow')">Close</button>
     </div>
       <div class="popup-window center hidden" id="day_background">
           <h1 class="popup-title">A or E Day?</h1>

@@ -57,6 +57,7 @@ let accessToken = null;
       }
       accessToken = response.access_token;
       // document.getElementById('signout_button').style.visibility = 'visible';
+      document.getElementById('authorize_button').style.visibility = 'hidden';
       document.getElementById('authorize_button').innerText = 'Refresh';
       await createPicker(callback);
     };

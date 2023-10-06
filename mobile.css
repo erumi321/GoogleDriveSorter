@@ -1,0 +1,130 @@
+@media (min-width: 80px) and (max-width: 1000px)  {
+    #MainTitle {
+        margin-left: 1vw;
+        font-size: 8em;
+    }
+    #MainCenterButtons {
+        margin-left: 0.5vw;
+    }
+    #CogContainer {
+        transform: scale(3);
+        width: 33.3%;
+        margin-left: 33vw;
+    }
+    .cog {
+        margin-left: -5.4vw;
+    }
+    .colorful-btn {
+        width: 40vw;
+        height: 8vh;
+        font-size: 3em;
+        margin: auto;
+        border-radius: 8vw;
+        margin-top: 0vh;
+        margin-bottom: 20vh;
+        transition: box-shadow 0.2s ease-out, margin-top 0.2s ease-out;
+    }
+
+    .colorful-btn::after {
+        position: absolute;
+        top: -4px; bottom: -4px;
+        left: -4px; right: -4px;
+        background:  linear-gradient(66deg, #4285F4 25%, #DB4437 25%, #DB4437 50%,#F4B400 50%, #F4B400 75%, #0F9D58 75%);
+        content: '';
+        z-index: -1;
+        border-radius: 8vw;
+    }
+    
+    .colorful-btn:active {
+        box-shadow: none;
+        margin-top: 2vh;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .material-symbols-outlined {
+        margin-right: 10vw;
+        margin-top: -4.5vh;
+        transform: scale(4);
+    }
+    .material-symbols-outlined-fill {
+        margin-right: 10vw;
+        margin-top: -4.5vh;
+        transform: scale(4);
+    }
+    @keyframes settings-rotate {
+        0% {transform: scale(4) rotate(0deg);}
+        100% {transform: scale(4) rotate(120deg);}
+    }
+    #settings-bar {
+        left: -3vw;
+        top: 95vh;
+        height: 90vh;
+        width: 105vw;
+        transition: all 0.6s ease;
+    }
+    #settings-bar.extended {
+        left: -3vw;
+        height: 90vh;
+        top: 30vh;
+        padding-top: 6vh;
+        background-color: #8c8cbf;
+        border: #000 4px solid;
+        transition: all 0.6s ease;
+    }
+    .settings-card p {
+        font-size: 3em;
+        width: 80vw;
+    }
+    .settings-card input {
+        margin-left: 10vw;
+        width: 80vw;
+        height: 5vh;
+        font-size: 4em;
+    }
+
+    .popup-window {
+        left: 10vw;
+        width: 80vw;
+        top: 35vh;
+        height: 20vh;
+    }
+
+    .popup-title {
+        top: -3vh;
+        font-size: 5em;
+    }
+
+    .popup-close {
+        left: auto;
+        font-size: 3em;
+        width: 30vw;
+        height: 3vh;
+    }
+
+    .newfile-input {
+        top: 7.5vh;
+        width: 60vw;
+        height: 5vh;
+        font-size: 4em;
+        border-radius: 4vw;
+    }
+
+    #ADayButton {
+        font-size: 3em;
+        width: 20vw;
+        height: 3vh;
+        margin-right: 25vw;
+    }
+    #EDayButton {
+        font-size: 3em;
+        width: 20vw;
+        height: 3vh;
+        margin-left: 25vw;
+    }
+    #fail-container {
+        margin-top: 4vh;
+    }
+    .fail-card {
+        font-size: 2em;
+    }
+}
